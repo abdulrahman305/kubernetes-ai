@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jaeger
+  namespace: tracing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jaeger
+  template:
+    metadata:
+      labels:
+        app: jaeger
+    spec:
+      containers:
+      - name: jaeger
+        image: jaegertracing/all-in-one:1.22
+        ports:
+        - containerPort: 16686
+        - containerPort: 14268
+        - containerPort: 14250
+        - containerPort: 6831
+        - containerPort: 6832
+        - containerPort: 5778
+        env:
+        - name: COLLECTOR_ZIPKIN_HTTP_PORT
+          value: "9411"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jaeger
+  namespace: tracing
+spec:
+  selector:
+    app: jaeger
+  ports:
+    - name: query
+      protocol: TCP
+      port: 16686
+      targetPort: 16686
+    - name: collector
+      protocol: TCP
+      port: 14268
+      targetPort: 14268
+    - name: grpc
+      protocol: TCP
+      port: 14250
+      targetPort: 14250
+    - name: agent-udp-sender
+      protocol: UDP
+      port: 6831
+      targetPort: 6831
+    - name: agent-udp-receiver
+      protocol: UDP
+      port: 6832
+      targetPort: 6832
+    - name: config
+      protocol: TCP
+      port: 5778
+      targetPort: 5778
+    - name: zipkin
+      protocol: TCP
+      port: 9411
+      targetPort: 9411
+  type: ClusterIP

@@ -1,0 +1,32 @@
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script:
+    - echo "Building the application..."
+    - npm install
+    - npm run build
+
+test:
+  stage: test
+  script:
+    - echo "Running tests..."
+    - npm test
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying the application..."
+    - docker build -t your-registry/your-app:latest .
+    - echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+    - docker push your-registry/your-app:latest
+    - kubectl apply -f k8s/deployment.yaml
+    - kubectl apply -f k8s/service.yaml
+  environment:
+    name: production
+    url: http://your-production-url
+  only:
+    - main

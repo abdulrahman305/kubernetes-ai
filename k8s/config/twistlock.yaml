@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: twistlock
+  labels:
+    app: twistlock
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: twistlock
+  template:
+    metadata:
+      labels:
+        app: twistlock
+    spec:
+      containers:
+      - name: twistlock
+        image: twistlock/twistlock:latest
+        ports:
+        - containerPort: 8083
+        env:
+        - name: TWISTLOCK_CONSOLE
+          value: "http://twistlock-console:8083"
+        - name: TWISTLOCK_USER
+          valueFrom:
+            secretKeyRef:
+              name: twistlock-secret
+              key: username
+        - name: TWISTLOCK_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: twistlock-secret
+              key: password
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8083
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8083
+          initialDelaySeconds: 30
+          periodSeconds: 10
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: twistlock-service
+  labels:
+    app: twistlock
+spec:
+  selector:
+    app: twistlock
+  ports:
+    - protocol: TCP
+      port: 8083
+      targetPort: 8083
+  type: ClusterIP
