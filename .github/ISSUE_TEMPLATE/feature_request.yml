@@ -67,3 +67,12 @@ body:
       placeholder: "Example: 'This feature will significantly reduce the time required for file uploads, improving overall productivity.'"
     validations:
       required: true
+
+  - type: input
+    id: severity
+    attributes:
+      label: Severity
+      description: Specify the severity of the feature request (Low, Medium, High).
+      placeholder: "Example: 'High'"
+    validations:
+      required: true
