@@ -219,3 +219,14 @@ To streamline the contribution process, we have integrated `gitauto` into our re
    - Once approved, your changes will be merged into the main branch.
 
 Thank you for contributing!
+
+## Purpose and Features of the `gitauto` Integration
+
+The `gitauto` integration in this repository aims to streamline the process of managing issues and pull requests. The key features of the `gitauto` integration include:
+
+- Automated branch creation for new features or bug fixes.
+- Simplified commit and push process.
+- Automated pull request creation.
+- Integration with the repository's issue tracking system.
+
+For more information and detailed instructions on how to use `gitauto`, please refer to the [official gitauto documentation](https://example.com/gitauto-docs).

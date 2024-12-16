@@ -148,3 +148,12 @@ body:
       placeholder: "Example: 'This bug significantly disrupts my workflow and causes delays in my project.'"
     validations:
       required: true
+
+  - type: input
+    id: environment_details
+    attributes:
+      label: Environment Details
+      description: Provide details about your environment (e.g., development, staging, production).
+      placeholder: "Example: 'Production environment with Kubernetes cluster version 1.21.0'"
+    validations:
+      required: true
