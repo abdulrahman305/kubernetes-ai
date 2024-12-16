@@ -1,0 +1,33 @@
+name: Question
+description: Ask a question or seek clarification about the project
+title: "Question: "
+labels: ["question", "gitauto"]
+# assignees: [""]
+
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: What is your question or what do you need clarification on?
+      placeholder: "Example: 'Can you explain how the AI model integration works?'"
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Provide any context or background information related to your question.
+      placeholder: "Example: 'I am trying to integrate a custom AI model and need guidance on the deployment process.'"
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_information
+    attributes:
+      label: Additional Information
+      description: Include any other information or details that might help in answering your question.
+      placeholder: "Describe it here"
+    validations:
+      required: false

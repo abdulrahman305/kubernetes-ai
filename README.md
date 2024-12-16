@@ -1,5 +1,15 @@
 # Kubernetes Cluster Setup and Sample Application Deployment
 
+## Purpose and Features of the Project
+
+This project aims to provide a comprehensive guide for setting up a Kubernetes cluster using Minikube and deploying a sample application along with a generative AI model. The key features of this project include:
+
+- Step-by-step instructions for setting up a Kubernetes cluster using Minikube.
+- Deployment of a sample application to the Kubernetes cluster.
+- Integration and deployment of generative AI models as services within the Kubernetes cluster.
+- Troubleshooting tips and common issues encountered during the setup and deployment process.
+- Usage examples for accessing the deployed services.
+
 ## Setting up a Kubernetes Cluster using Minikube
 
 1. Install Minikube:

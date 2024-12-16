@@ -130,3 +130,21 @@ body:
       placeholder: "Describe it here"
     validations:
       required: false
+
+  - type: input
+    id: severity
+    attributes:
+      label: Severity
+      description: Specify the severity of the bug (Low, Medium, High).
+      placeholder: "Example: 'High'"
+    validations:
+      required: true
+
+  - type: input
+    id: impact
+    attributes:
+      label: Impact
+      description: Describe the impact of this bug on your workflow or project.
+      placeholder: "Example: 'This bug significantly disrupts my workflow and causes delays in my project.'"
+    validations:
+      required: true
