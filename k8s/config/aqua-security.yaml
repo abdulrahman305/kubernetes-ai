@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aqua-security
+  labels:
+    app: aqua-security
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aqua-security
+  template:
+    metadata:
+      labels:
+        app: aqua-security
+    spec:
+      containers:
+      - name: aqua-security
+        image: aquasec/scanner:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: AQUA_SERVER
+          value: "http://aqua-server:8080"
+        - name: AQUA_USER
+          valueFrom:
+            secretKeyRef:
+              name: aqua-secret
+              key: username
+        - name: AQUA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: aqua-secret
+              key: password
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aqua-security-service
+  labels:
+    app: aqua-security
+spec:
+  selector:
+    app: aqua-security
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP
