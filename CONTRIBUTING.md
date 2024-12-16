@@ -56,4 +56,39 @@ We welcome contributions! Please follow these guidelines to contribute:
 8. **Merge**:
    - Once approved, your changes will be merged into the main branch.
 
+### Using `gitauto` for Contributing
+
+To streamline the contribution process, we have integrated `gitauto` into our repository. Follow these steps to use `gitauto`:
+
+1. **Install `gitauto`**:
+   - Ensure that `gitauto` is installed and configured on your local machine. You can find the installation instructions in the [gitauto documentation](https://example.com/gitauto-docs).
+
+2. **Create a Branch**:
+   - Use `gitauto` to create a new branch for your feature or bug fix:
+     ```sh
+     gitauto branch create feature-or-bugfix-name
+     ```
+
+3. **Make Changes**:
+   - Make your changes in the new branch.
+
+4. **Commit and Push**:
+   - Use `gitauto` to commit your changes and push the branch to your forked repository:
+     ```sh
+     gitauto commit -m "Description of your changes"
+     gitauto push
+     ```
+
+5. **Submit a Pull Request**:
+   - Use `gitauto` to submit a pull request:
+     ```sh
+     gitauto pull-request create
+     ```
+
+6. **Review Process**:
+   - Your pull request will be reviewed by the maintainers. Please address any feedback and make necessary changes.
+
+7. **Merge**:
+   - Once approved, your changes will be merged into the main branch.
+
 Thank you for contributing!
