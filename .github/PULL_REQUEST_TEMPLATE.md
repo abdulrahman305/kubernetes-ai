@@ -39,6 +39,14 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 - [ ] New and existing unit tests pass locally with my changes
 - [ ] Any dependent changes have been merged and published in downstream modules
 
+## Related Issues
+
+Please link any related issues here.
+
+## Summary of Changes
+
+Provide a summary of the changes made in this pull request.
+
 ## Using `gitauto` for Pull Requests
 
 To streamline the pull request process, we have integrated `gitauto` into our repository. Follow these steps to use `gitauto`:
