@@ -12,6 +12,8 @@ spec:
       port: 80
       targetPort: 80
   type: ClusterIP
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
 
 ---
 apiVersion: v1
@@ -28,3 +30,5 @@ spec:
       port: 8080
       targetPort: 8080
   type: ClusterIP
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
